@@ -26,7 +26,7 @@ texPdfEnv.MakeTexPdf(r"howdy $\int_0^\infty f(x) \mathrm{d}x$", fileName="blurb"
 
 Provides the output:
 
-[pytexpdf0.pdf](pytexpdf0.pdf) and  [blurb.pdf](blurb.pdf)
+[pytexpdf0.pdf](https://github.com/aryadaroui/pytexpdf/blob/master/pytexpdf0.pdf) and  [blurb.pdf](https://github.com/aryadaroui/pytexpdf/blob/master/blurb.pdf)
 
 ## Dependencies
 
