@@ -1,4 +1,11 @@
-"""Module to generate cropped PDFs of LaTeX typeset strings."""
+"""
+Module to generate cropped PDFs of LaTeX typeset strings. Example:
+>>> import pytexpdf
+>>> texPdfEnv = pytexpdf.PyTexPdf()
+>>> texPdfEnv.UsePackage("amsmath")
+>>> texPdfEnv.MakeTexPdf(r"howdy \int \, \mathrm{d}x")
+>>> texPdfEnv.MakeTexPdf("howdy $\\int \\, \\mathrm{d}x$", fileName="blurb", isEqn=False)
+"""
 
 import os.path # because it's special
 from os import system, remove
@@ -8,15 +15,16 @@ from warnings import warn
 class PyTexPdf:
 	"""Generate cropped PDFs of LaTeX typeset equations."""
 	def __init__(self):
+		"""Initializes object, holds package list"""
 		self.packages = ""
 
 	def UsePackage(self, package: str):
-		"""Tell LaTeX to use a package. e.g. `UsePackage("amsmath")`. Can add multiple packages by calling method again."""
+		"""Tell LaTeX to use a package."""
 		self.packages = self.packages + "\\usepackage{" + package + "}\n"
 
 	def MakeTexPdf(self, texString: str, fileName="pytexpdf", isEqn=True) -> str:
 		"""
-		Takes a TeX string, generates a .pdf from it, and returns the name of the .pdf file
+		Takes a TeX string, generates a .pdf from it, and returns the name of the .pdf file. If filename not given, it will generate its own. Assumes the TeX string is supposed to be an equation.
 		"""
 		tex = ".tex"
 		pdf = ".pdf"
@@ -61,7 +69,7 @@ class PyTexPdf:
 
 	@staticmethod
 	def _CheckTex() -> bool:
-		"""Checks if user has pdflatex at predictable location"""
+		"""Checks if user has pdflatex at predicted location"""
 		pdflatex = True
 		if "darwin" in platform:
 			if not os.path.exists("/Library/TeX/texbin/pdflatex"):
