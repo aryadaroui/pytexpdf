@@ -61,4 +61,4 @@ $ % used if isEqn=True
 \end{document}
 ```
 
-and compiles the file with `pdflatex -interaction=nonstopmode`. This should help you google your errors.
+and compiles the file with `pdflatex -interaction=nonstopmode`. This combination tends ignore parts or commands of the `texString` that it does not recognize and compiles anyway. Hopefully this will help you google your errors.
